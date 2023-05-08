@@ -8,12 +8,3 @@ CREATE TABLE orders (
   completed_at TIMESTAMP NOT NULL
 );
 
-
--- CREATE INDEX FK_1 ON Orders
--- (
---  "ID Primary",
---  Email,
---  password,
---  Name_1,
---  "Number"
--- );

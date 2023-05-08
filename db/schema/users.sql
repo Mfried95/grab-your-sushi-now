@@ -7,8 +7,8 @@ CREATE TABLE users(
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  phone_number VARCHAR(255) NOT NULL,
-  address VARCHAR(255) NOT NULL,
-  credit_card VARCHAR(255) NOT NULL
+  phone_number VARCHAR(255),
+  address VARCHAR(255),
+  credit_card VARCHAR(255)
 );
 
