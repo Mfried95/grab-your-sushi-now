@@ -1,18 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Mirza:wght@400;700&display=swap');
+
+
 body{
   background-color: black;
-}
+  font-family: 'Mirza', cursive;
 
-nav{
-  color: white;
+
+  // NAV BAR 
+  nav{
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 5em;
+    align-items: center;
+    gap: 2em;
+    border-bottom: solid 1px white;
+    .logo-container{
+      display: flex;
+      align-items: center;
+      gap: 2em;
+    }
   
-li{
-  list-style: none;
-}
+  ul{
+    display: flex;
+    gap: 2em;
+  }
 
-a{
-  list-style: none;
-  text-decoration: none;
-  color: white;
-}
+    li{
+      display: flex;
+      list-style: none;
+    }
+    
+    a{
+      list-style: none;
+      text-decoration: none;
+      color: white;
+      font-size: 22px;
+    }
+
+    a:hover{
+      color: rgb(233, 122, 122);
+    }
+
+    .line{
+      border-bottom: solid 1px white;
+    }
+  }  
+
+// MENU PAGE
+
+  .menu{
+    background-color: #F5F5F5;
+    width: 75%;
+    margin: 1.5em auto;
+    height: 600px;
+    border-radius: 1rem;
+  }
+
+
+
+// ORDER PAGE
+
+  .order{
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F5F5;
+    width: 75%;
+    margin: 1.5em auto;
+    height: 600px;
+    border-radius: 1rem;
+    align-items: center;
+
+    h2{
+      text-align: center;
+      font-size: 30px;
+      padding-top: 0.5em;
+    }
+
+  }
+
+  .order-container{
+    display: flex;
+    padding: 2em;
+    gap: 2em;
+  }
+
+  .user-info{
+    border: solid 1px black;
+    background-color: white;
+    height: 400px;
+    width: 400px;
+  }
+
+  .order-details{
+    border: solid 1px black;
+    background-color: white;
+    height: 400px;
+    width: 400px;
+  }
+  
+
+  .logo-container {
+
+   
+  }
 
 }
