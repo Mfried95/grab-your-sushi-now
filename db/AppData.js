@@ -1,11 +1,10 @@
 export default [
-    
     {
-        id: 'Appitisers',
+        id: 'Serial id',
         name: "Yam Tempura",
         description: " ",
         image: "/../public/assets/apps/potato.jpeg",
-    },
+    }, 
     {
         id: 'app',
         name: "Cheese Wontons",
