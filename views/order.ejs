@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SUSHI2GO | View Order</title>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="/styles/nav.scss" />
+
+    <script src="/vendor/jquery-3.0.0.js"></script>
+    <script defer src="/scripts/app.js"></script>
+  </head>
+
+  <body>
+    <%- include('partials/nav') %>
+  </body>
+
+  <main class="order">
+    <h2>View Order</h2>
+    <div class="order-container">
+      <section class="user-info">
+        <h2>User</h2>
+      </section>
+      <section class="order-details">
+        <h2>Order</h2>
+      </section>
+    </div>
+    <div class="button-container">
+    <button>Send</button>
+    <button>Edit Order</button>
+    </div>
+  </main>
+</html>
