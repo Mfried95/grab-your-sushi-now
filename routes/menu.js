@@ -6,9 +6,9 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
-router.get('/menu', (req, res) => {
+router.get('/', (req, res) => {
   console.log("menu page is here");
   res.render('menu');
 });
