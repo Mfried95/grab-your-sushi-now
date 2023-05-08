@@ -5,7 +5,6 @@ console.log("connected!!");
 const getUsers = () => {
   return db.query('SELECT * FROM users;')
     .then(data => {
-      console.log(data.rows);
       return data.rows;
     });
 };
