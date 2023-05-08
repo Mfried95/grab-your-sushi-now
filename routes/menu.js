@@ -8,9 +8,9 @@
 const express = require('express');
 const router  = express.Router();
 
-router.get('/menu', (req, res) => {
+router.get('/', (req, res) => {
   console.log("menu page is here");
-  res.render('/menu');
+  res.render('menu');
 });
 
 module.exports = router;

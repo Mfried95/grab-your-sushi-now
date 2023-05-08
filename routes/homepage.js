@@ -10,7 +10,7 @@ const router  = express.Router();
 
 router.get('/', (req, res) => {
   console.log("homepage is here");
-  res.send('This is the homepage');
+  res.render('index');
 });
 
 module.exports = router;
