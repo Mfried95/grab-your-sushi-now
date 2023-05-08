@@ -7,10 +7,19 @@
 
 const express = require('express');
 const router = express.Router();
+const menuQueries = require('../db/queries/dbQueries');
 
 router.get('/', (req, res) => {
-  console.log("menu page is here");
-  res.render('menu');
+  menuQueries.getMenuItems()
+    .then(items => {
+      console.log("My menu page is here");
+      res.json({ items });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
 });
 
 module.exports = router;
