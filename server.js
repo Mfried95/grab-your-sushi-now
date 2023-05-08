@@ -32,8 +32,8 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const homepageRoutes = require('./routes/homepage');
-const loginRoutes = require('./routes/login');
-const registerRoutes = require('./routes/register');
+const loginRoutes = require('./routes/loginRoute');
+const registerRoutes = require('./routes/registerRoute');
 const menuRoutes = require('./routes/menu');
 
 // Mount all resource routes
