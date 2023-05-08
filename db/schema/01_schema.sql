@@ -1,0 +1,41 @@
+-- Drop and recreate Users table (Example)
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS menu_items CASCADE;
+DROP TABLE IF EXISTS orders CASCADE;
+DROP TABLE IF EXISTS cart_items CASCADE;
+
+CREATE TABLE users(
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  phone_number VARCHAR(255),
+  address VARCHAR(255),
+  credit_card VARCHAR(255)
+);
+
+
+CREATE TABLE menu_items (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(250) NOT NULL,
+  cost DECIMAL NOT NULL,
+  image VARCHAR(250) NOT NULL
+);
+
+
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER  NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  total DECIMAL NOT NULL,
+  status BOOLEAN NOT NULL DEFAULT TRUE,
+  completed_at TIMESTAMP NOT NULL
+);
+
+CREATE TABLE cart_items (
+  id SERIAL PRIMARY KEY NOT NULL,
+  menu_item_id INTEGER NOT NULL REFERENCES menu_items(id)  ON DELETE CASCADE,
+  quantity INTEGER NOT NULL,
+  total_cost DECIMAL NOT NULL,
+  order_id INTEGER  NOT NULL REFERENCES orders(id) ON DELETE CASCADE
+);
+
