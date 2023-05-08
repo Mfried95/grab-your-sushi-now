@@ -10,7 +10,7 @@ const router  = express.Router();
 
 router.get('/', (req, res) => {
   console.log("menu page is here");
-  res.render('/menu');
+  res.render('menu');
 });
 
 module.exports = router;
