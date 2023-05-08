@@ -58,17 +58,6 @@ app.get('/', (req, res) => {
   res.render('homepage');
 });
 
-app.get('/menu', (req, res) => {
-  res.render('menu');
-});
-
-app.get('/login', (req, res) => {
-  res.render('login');
-});
-
-app.get('/order', (req, res) => {
-  res.render('order');
-});
 
 
 app.listen(PORT, () => {
