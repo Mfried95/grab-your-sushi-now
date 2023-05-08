@@ -9,8 +9,8 @@ const express = require('express');
 const router  = express.Router();
 
 router.get('/', (req, res) => {
-  console.log("homepages.js");
-  res.send('homepages');
+  console.log("Register Page");
+  res.send('This is the register page');
 });
 
 module.exports = router;

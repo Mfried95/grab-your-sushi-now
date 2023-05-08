@@ -31,7 +31,9 @@ app.use(express.static('public'));
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
-const homepagesRoutes = require('./routes/homepages');
+const homepageRoutes = require('./routes/homepage');
+const loginRoutes = require('./routes/login');
+const registerRoutes = require('./routes/register');
 const menuRoutes = require('./routes/menu');
 
 // Mount all resource routes
@@ -40,8 +42,11 @@ const menuRoutes = require('./routes/menu');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
-app.use('/homepages', homepagesRoutes);
+app.use('/homepage', homepageRoutes);
 app.use('/menu', menuRoutes);
+app.use('/login', loginRoutes);
+app.use('/register', registerRoutes);
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -49,7 +54,7 @@ app.use('/menu', menuRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('homepage');
 });
 
 app.listen(PORT, () => {
