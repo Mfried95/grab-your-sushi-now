@@ -32,7 +32,6 @@ const getMenuItems = function () {
     });
 };
 
-
 const addItemstoCart = function() {
   return db.query('INSERT * INTO orders ');
 
