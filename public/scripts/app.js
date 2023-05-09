@@ -8,6 +8,7 @@ $(document).ready(function () {
     const item = $(this).val();
     console.log(item);
     orderCart.push(item);
+    localStorage.setItem('order-items', JSON.stringify(orderCart));
   });
 
   $(".remove").click(function () {
@@ -19,5 +20,5 @@ $(document).ready(function () {
     console.log(orderCart);
   });
 
-});
 
+});

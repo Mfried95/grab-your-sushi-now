@@ -24,12 +24,15 @@ router.get("/", (req, res) => {
 
 
 router.post("/", (req, res) => {
+  const orderMenu = req.body.items;
   menuQueries
-.addItemstoCart()
-.then(items);
-  res.send((items) => {
-
-  });
+    .addItemsToCart(orderMenu)
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
 });
 
 

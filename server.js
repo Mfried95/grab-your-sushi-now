@@ -57,6 +57,7 @@ app.use('/order', orderRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
+  console.log('testing');
   res.render('homepage');
 });
 
