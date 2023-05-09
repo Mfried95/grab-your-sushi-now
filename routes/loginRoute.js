@@ -28,11 +28,11 @@ router.post("/", (req, res) => {
     .login(req.body.email, req.body.password)
     .then(user => {
       if (!user) {
-        res.send("User account doesn't exist. Please register first. Thank you. :)");
+        res.send("User account doesn't exist. Please register first.");
         return;
       }
       req.session.user_id = user.id;
-      res.redirect("/");
+      res.redirect("menu");
     })
     .catch(err => res.send(err));
 });
