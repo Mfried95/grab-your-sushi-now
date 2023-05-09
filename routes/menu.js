@@ -6,8 +6,10 @@
  */
 
 const express = require("express");
+const db = require("../db/connection");
 const router = express.Router();
 const menuQueries = require("../db/queries/dbQueries");
+
 
 router.get("/", (req, res) => {
   menuQueries
@@ -19,5 +21,16 @@ router.get("/", (req, res) => {
       res.status(500).json({ error: err.message });
     });
 });
+
+
+router.post("/", (req, res) => {
+  menuQueries
+.addItemstoCart()
+.then(items);
+  res.send((items) => {
+
+  });
+});
+
 
 module.exports = router;

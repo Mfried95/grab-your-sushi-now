@@ -32,4 +32,10 @@ const getMenuItems = function() {
     });
 };
 
-module.exports = { getMenuItems, getUserWithEmail, login };
+
+const addItemstoCart = function() {
+  return db.query('INSERT * INTO orders ');
+
+};
+
+module.exports = { getMenuItems, addItemstoCart, getUserWithEmail, login };
