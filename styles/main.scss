@@ -49,15 +49,51 @@ body{
 
 // MENU PAGE
 
-  .menu{
+  .menu-container{
     background-color: #F5F5F5;
     width: 75%;
     margin: 1.5em auto;
-    height: 600px;
     border-radius: 1rem;
   }
 
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    h1{
+      text-align: center;
+    }
+  }
+  
+  .menu-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    border-radius: 0.5rem;
+    img{
+      width: 200px;
+      height: 150px;
+    }
+  }
 
+  .button-item-container{
+    padding: 1em;
+    display: flex;
+    gap: 1em;
+  }
+
+  .add{
+    background-color: rgb(114, 239, 114);
+    cursor: pointer;
+  }
+
+  .remove{
+    background-color: rgb(233, 122, 122);
+    cursor: pointer;
+  }
 
 // ORDER PAGE
 
