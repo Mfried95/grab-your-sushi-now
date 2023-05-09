@@ -9,10 +9,7 @@ const express = require('express');
 const router  = express.Router();
 
 router.get('/', (req, res) => {
-  console.log("My order page is here");
   res.render('order');
 });
-
-
 
 module.exports = router;

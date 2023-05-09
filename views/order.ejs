@@ -12,11 +12,8 @@
     <link rel="stylesheet" href="/styles/main.css" />
     <link rel="stylesheet" href="/styles/layout.css" />
     <link rel="stylesheet" href="/styles/nav.scss" />
-
-    <script
-  src="https://code.jquery.com/jquery-3.6.4.min.js"
-  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-  crossorigin="anonymous"></script>
+    <script src="../public/vendor/jquery-3.0.0.js"></script>
+    <script defer src="/scripts/app.js"></script>
   </head>
 
   <body>
@@ -31,6 +28,7 @@
       </section>
       <section class="order-details">
         <h2>Order</h2>
+        
       </section>
     </div>
     <div class="button-container">
@@ -38,4 +36,9 @@
     <button>Edit Order</button>
     </div>
   </main>
+
+  <script>
+    console.log(localStorage.getItem('order-items'))
+    
+  </script>
 </html>
