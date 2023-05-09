@@ -2,11 +2,11 @@
 
 
 body{
-  background-color: black;
+  background-color: white;
   font-family: 'Mirza', cursive;
 
 
-  // NAV BAR 
+  // NAV BAR
   nav{
     color: white;
     display: flex;
@@ -20,7 +20,7 @@ body{
       align-items: center;
       gap: 2em;
     }
-  
+
   ul{
     display: flex;
     gap: 2em;
@@ -30,7 +30,7 @@ body{
       display: flex;
       list-style: none;
     }
-    
+
     a{
       list-style: none;
       text-decoration: none;
@@ -45,7 +45,7 @@ body{
     .line{
       border-bottom: solid 1px white;
     }
-  }  
+  }
 
 // MENU PAGE
 
@@ -64,7 +64,7 @@ body{
       text-align: center;
     }
   }
-  
+
   .menu-items {
     display: flex;
     flex-direction: column;
@@ -134,11 +134,14 @@ body{
     height: 400px;
     width: 400px;
   }
-  
+
+  &.main-page {
+    background-color: black;
+  }
 
   .logo-container {
 
-   
+
   }
 
 }
