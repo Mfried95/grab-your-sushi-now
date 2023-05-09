@@ -5,20 +5,18 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const menuQueries = require('../db/queries/dbQueries');
+const menuQueries = require("../db/queries/dbQueries");
 
-router.get('/', (req, res) => {
-  menuQueries.getMenuItems()
-    .then(items => {
-      console.log("My menu page is here");
-      res.json({ items });
+router.get("/", (req, res) => {
+  menuQueries
+    .getMenuItems()
+    .then((items) => {
+      res.render("menu", { items });
     })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
     });
 });
 

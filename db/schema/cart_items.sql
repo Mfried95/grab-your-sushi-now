@@ -1,9 +1,0 @@
-DROP TABLE IF EXISTS cart_items CASCADE;
-
-CREATE TABLE cart_items (
-  id SERIAL PRIMARY KEY NOT NULL,
-  menu_item_id INTEGER NOT NULL REFERENCES menu_items(id)  ON DELETE CASCADE,
-  quantity INTEGER NOT NULL,
-  total_cost DECIMAL NOT NULL,
-  order_id INTEGER  NOT NULL REFERENCES orders(id) ON DELETE CASCADE
-);
