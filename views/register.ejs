@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Register</title>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="/styles/login.scss" />
+    <link rel="stylesheet" href="/styles/nav.scss" />
+
+    <script src="/vendor/jquery-3.0.0.js"></script>
+    <script defer src="/scripts/app.js"></script>
+  </head>
+
+  <body>
+    <% include('partials/nav') %>
+
+    <div class="register-container">
+      <div>
+        <h2>Register</h2>
+        <form method="post" action="/register" class="register-form">
+          <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <button type="submit">Register</button>
+      </div>
+    </div>
+
+  </body>
+</html>
