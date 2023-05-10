@@ -11,13 +11,22 @@
   <nav>
     <div class="logo-container">
       <h2>SUSHI-2-GO</h2>
-      <span><a href="/login">Login</a></span>
+      <% if(!user){ %>
+        <a class="nav-item nav-link" href="/register">Register</a>
+        <a class="nav-item nav-link" href="/login">Login</a>
+      <% } else { %>
+        <form action='/logout' method="post">
+          <label form="name"> Logged In As :<%= user.name %>z</label>
+          <button type="submit"> Logout </button>
+        </form>
+      <% } %>
+      <!-- <span><a href="/login">Login</a></span>
       <span><a href="/register">Register</a></span>
     </div>
 
     <ul>
       <li><a href="/order">View Order</a></li>
-      <li><a href="/menu">Menu</a></li>
+      <li><a href="/menu">Menu</a></li> -->
     </ul>
   </nav>
 </body>

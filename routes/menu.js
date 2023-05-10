@@ -7,6 +7,7 @@
 
 const express = require("express");
 const db = require("../db/connection");
+const cookieSession = require("cookie-session");
 const router = express.Router();
 const menuQueries = require("../db/queries/dbQueries");
 
@@ -15,7 +16,11 @@ router.get("/", (req, res) => {
   menuQueries
     .getMenuItems()
     .then((items) => {
-      res.render("menu", { items });
+      const templateVars = {
+        user: cookieSession.name,
+        items,
+      };
+      res.render("menu", templateVars);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });

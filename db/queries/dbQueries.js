@@ -23,6 +23,24 @@ const login = function(email, password) {
     .catch(err => console.log(err));
 };
 
+//register
+const register = function(name, email, password) {
+  const hash = bcrypt.hashSync(password, 10);
+  const values = [name, email, hash];
+  return db.query(
+      `
+      INSERT INTO users (name, email, password)
+      VALUES ($1, $2, $3)
+      RETURNING *
+    `,
+      values
+    )
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch(err => console.log(err));
+};
+
 
 const getMenuItems = function () {
   return db.query('SELECT * from menu_items;')
@@ -54,4 +72,4 @@ const getOrderDetails = function (order_id) {
 };
 
 
-module.exports = { getMenuItems, addItemstoCart, getUserWithEmail, login, getUserInfo, getOrderDetails };
+module.exports = { getMenuItems, addItemstoCart, getUserWithEmail, login, getUserInfo, getOrderDetails, register };
