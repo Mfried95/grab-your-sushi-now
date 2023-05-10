@@ -28,8 +28,7 @@ const login = function(email, password) {
 const register = function(name, email, password) {
   const hash = bcrypt.hashSync(password, 10);
   const values = [name, email, hash];
-  return db
-    .query(
+  return db.query(
       `
       INSERT INTO users (name, email, password)
       VALUES ($1, $2, $3)
@@ -37,10 +36,10 @@ const register = function(name, email, password) {
     `,
       values
     )
-    .then((res) => {
+    .then(res => {
       return res.rows[0];
     })
-    .catch((err) => console.log(err));
+    .catch(err => console.log(err));
 };
 
 
@@ -52,23 +51,24 @@ const getMenuItems = function () {
     });
 };
 
+const addItemstoCart = function() {
+  return db.query('INSERT * INTO orders ');
 
-const addItemstoCart = function (userId, itemId, quantity) {
-  const itemQuery = `
-    SELECT name, cost
-    FROM menu_items
-    WHERE id = $1
-  `;
-  return db.query(itemQuery, [itemId])
-    .then(result => {
-      const itemName = result.rows[0].name;
-      const itemCost = result.rows[0].cost;
-      const totalCost = itemCost * quantity;
-      const insertQuery = `
-        INSERT INTO orders (user_id, item_name, item_quantity, item_cost, total)
-        VALUES ($1, $2, $3, $4, $5)
-      `;
-      return db.query(insertQuery, [userId, itemName, quantity, itemCost, totalCost]);
+};
+
+const getUserInfo = function () {
+  return db.query('SELECT orders.id, users.id, users.name, users.email, users.address, users.phone_number, users.credit_card FROM orders JOIN cart_items on orders.id = cart_items.order_id JOIN users ON orders.user_id = users.id;')
+    .then(data => {
+      console.log(data.rows);
+      return data.rows;
+    });
+};
+
+const getOrderDetails = function (order_id) {
+  return db.query('SELECT * FROM cart_items WHERE order_id = $1', [order_id])
+    .then(data => {
+      console.log(data.rows);
+      return data.rows;
     });
 };
 
@@ -81,5 +81,4 @@ const addUser = function (values) {
 };
 
 
-
-module.exports = { getMenuItems, addItemstoCart };
+module.exports = { getMenuItems, addItemstoCart, getUserWithEmail, login, getUserInfo, getOrderDetails, register, addUser};
