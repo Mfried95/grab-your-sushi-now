@@ -7,9 +7,22 @@
 
 const express = require('express');
 const router  = express.Router();
+const { getUserInfo, getOrderDetails } = require("../db/queries/dbQueries");
 
-router.get('/', (req, res) => {
-  res.render('order');
+router.get('/', async (req, res) => {
+  try {
+    // Fetch user information
+    const userInfo = await getUserInfo();
+
+    // Fetch order details for the first order
+    const orderDetails = await getOrderDetails(1);
+
+    // Render the order page and pass the user information and order details
+    res.render('order', { userInfo, orderDetails });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal server error');
+  }
 });
 
 module.exports = router;

@@ -10,16 +10,5 @@ const getUsers = () => {
     });
 };
 
-const login = function(email, password) {
-  return getUserWithEmail(email)
-    .then(user => {
-      if (bcrypt.compareSync(password, user.password)) {
-        return user;
-      }
-      return null;
-    })
-    .catch(err => console.log(err));
-};
 
-
-module.exports = { getUsers, login };
+module.exports = { getUsers };

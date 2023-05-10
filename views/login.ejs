@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
 
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <title>Home Page</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
-    <link rel="stylesheet" href="/styles/layout.css" />
-    <link rel="stylesheet" href="/styles/login.scss" />
-    <link rel="stylesheet" href="/styles/nav.scss" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script
-  src="https://code.jquery.com/jquery-3.6.4.min.js"
-  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-  crossorigin="anonymous"></script>
-    <script defer src="/scripts/app.js"></script>
-  </head>
-<body>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/login.scss" />
+  <link rel="stylesheet" href="/styles/nav.scss" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+</head>
+
+<body class="login-body">
 
   <div class="login-container">
     <h2>Login</h2>
 
+    <div>
+      <form method="POST" action="/login">
+        <div class="form-label-group">
+          <label for="input-email">Email </label>
+          <input type="email" name="email" id="input-email" class="form-control" placeholder="Email address" required>
+        </div>
+        <div class="form-label-group">
+          <label for="inputPassword">Password</label>
+          <input type="password" name="password" id="input-Password" class="form-control" placeholder="Password"
+            required>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Login</button>
+      </form>
+    </div>
+
   </div>
 
 </body>
+
 </html>
