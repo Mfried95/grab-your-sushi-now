@@ -10,6 +10,7 @@ const router  = express.Router();
 const { getUserInfo, getOrderDetails } = require("../db/queries/dbQueries");
 
 router.get('/', async (req, res) => {
+  console.log('orderRoute');
   try {
     // Fetch user information
     const userInfo = await getUserInfo();

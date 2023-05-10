@@ -27,7 +27,8 @@ const login = function(email, password) {
 const register = function(name, email, password) {
   const hash = bcrypt.hashSync(password, 10);
   const values = [name, email, hash];
-  return db.query(
+  return db
+    .query(
       `
       INSERT INTO users (name, email, password)
       VALUES ($1, $2, $3)
@@ -35,10 +36,10 @@ const register = function(name, email, password) {
     `,
       values
     )
-    .then(res => {
+    .then((res) => {
       return res.rows[0];
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
 
@@ -69,6 +70,7 @@ const addItemstoCart = function (userId, itemId, quantity) {
       return db.query(insertQuery, [userId, itemName, quantity, itemCost, totalCost]);
     });
 };
+
 
 
 
