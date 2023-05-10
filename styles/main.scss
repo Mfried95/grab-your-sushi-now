@@ -2,11 +2,11 @@
 
 
 body{
-  background-color: black;
+  background-color: white;
   font-family: 'Mirza', cursive;
 
 
-  // NAV BAR 
+  // NAV BAR
   nav{
     color: white;
     display: flex;
@@ -20,17 +20,17 @@ body{
       align-items: center;
       gap: 2em;
     }
-  
+
   ul{
     display: flex;
-    gap: 2em;
+    gap: 3em;
   }
 
     li{
       display: flex;
       list-style: none;
     }
-    
+
     a{
       list-style: none;
       text-decoration: none;
@@ -45,9 +45,15 @@ body{
     .line{
       border-bottom: solid 1px white;
     }
-  }  
+  }
 
 // MENU PAGE
+.menu-container{
+  background-color: #F5F5F5;
+  width: 75%;
+  margin: 1.5em auto;
+  border-radius: 1rem;
+}
 
   .menu{
     background-color: #F5F5F5;
@@ -57,8 +63,77 @@ body{
     border-radius: 1rem;
   }
 
+<<<<<<< HEAD
 
+=======
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    h1{
+      text-align: center;
+    }
+  }
 
+  .menu-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  border-radius: 0.5rem;
+  img{
+    width: 200px;
+    height: 150px;
+  }
+  span{
+    font-size: 1.5em;
+  }
+  h2{
+    margin: 0;
+  }
+}
+>>>>>>> 498d9a6f471e6c7f2943aa8b0f4c31be650a4c70
+
+.button-item-container{
+  padding: 1em;
+  display: flex;
+  gap: 1em;
+}
+
+.add{
+  background-color: rgb(114, 239, 114);
+  border: none;
+  padding: 0.5em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add:hover{
+  background-color: green;
+}
+
+.remove{
+  background-color: rgb(233, 122, 122);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.remove:hover{
+  background-color: red;
+}
+  
 // ORDER PAGE
 
   .order{
@@ -67,14 +142,18 @@ body{
     background-color: #F5F5F5;
     width: 75%;
     margin: 1.5em auto;
-    height: 600px;
     border-radius: 1rem;
     align-items: center;
-
+    line-height: 1.5em;
+    font-size: 25px;
     h2{
       text-align: center;
       font-size: 30px;
       padding-top: 0.5em;
+    }
+
+    .order-details{
+      padding: 1em;
     }
 
   }
@@ -97,12 +176,16 @@ body{
     background-color: white;
     height: 400px;
     width: 400px;
+    overflow: scroll;
   }
-  
+
+  &.main-page, &.main-order, &.home-body{
+    background-color: black;
+  }
 
   .logo-container {
 
-   
+
   }
 
 }

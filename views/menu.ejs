@@ -9,11 +9,38 @@
   <link rel="stylesheet" href="/styles/nav.scss">
   <title>SUSHI2GO | Menu</title>
 </head>
+<<<<<<< HEAD
 <body>
   <%- include('partials/nav') %>
   
   <main class="menu">
   
+=======
+
+<body class="main-page">
+  <%- include('partials/nav') %>
+
+  <main class="menu-container">
+    <h1>Menu</h1>
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
+    <div class="menu">
+      <% items.forEach(function(item) { %>
+        <div class="menu-items">
+          
+          <h2><%= item.name %></h2> <span> <%= item.cost %></span>
+          <img src="<%= item.image %>" alt="<%= item.name %>">
+          <div class="button-item-container">
+            <button class="add" value="<%= JSON.stringify(item) %>">ADD +</button>
+        <button class="remove" value="<%= JSON.stringify(item) %>">Remove</button>
+          </div>
+        </div>
+      <% }); %>
+
+    </div>
+>>>>>>> 498d9a6f471e6c7f2943aa8b0f4c31be650a4c70
   </main>
 
 </body>

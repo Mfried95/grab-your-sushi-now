@@ -5,6 +5,9 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieSession = require('cookie-session');
+
+
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -24,6 +27,14 @@ app.use(
     isSass: false, // false => scss, true => sass
   })
 );
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ["key1"],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
 
 app.use(express.static('public'));
 
@@ -57,6 +68,7 @@ app.use('/order', orderRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
+  console.log('testing');
   res.render('homepage');
 });
 

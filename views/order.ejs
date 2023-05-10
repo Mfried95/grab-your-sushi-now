@@ -12,12 +12,11 @@
     <link rel="stylesheet" href="/styles/main.css" />
     <link rel="stylesheet" href="/styles/layout.css" />
     <link rel="stylesheet" href="/styles/nav.scss" />
-
-    <script src="/vendor/jquery-3.0.0.js"></script>
+    <script src="../public/vendor/jquery-3.0.0.js"></script>
     <script defer src="/scripts/app.js"></script>
   </head>
 
-  <body>
+  <body class="main-order">
     <%- include('partials/nav') %>
   </body>
 
@@ -26,14 +25,29 @@
     <div class="order-container">
       <section class="user-info">
         <h2>User</h2>
+        <% userInfo.forEach(user => { %>
+          <ul>
+            <li>Name: <%= user.name %></li>
+            <li>Email: <%= user.email %></li>
+            <li>Address: <%= user.address %></li>
+            <li>Phone Number: <%= user.phone_number %></li>
+            <li>Credit Card: <%= user.credit_card %></li>
+          </ul>
+        <% }); %>
       </section>
       <section class="order-details">
         <h2>Order</h2>
+        
       </section>
     </div>
     <div class="button-container">
-    <button>Send</button>
-    <button>Edit Order</button>
+      <button>Send</button>
+      <button>Edit Order</button>
     </div>
   </main>
+
+  <script>
+    console.log(localStorage.getItem('order-items'))
+    
+  </script>
 </html>
