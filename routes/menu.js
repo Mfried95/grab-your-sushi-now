@@ -6,11 +6,9 @@
  */
 
 const express = require("express");
-const db = require("../db/connection");
-const cookieSession = require("cookie-session");
 const router = express.Router();
+const cookieSession = require("cookie-session");
 const menuQueries = require("../db/queries/dbQueries");
-
 
 router.get("/", (req, res) => {
   menuQueries

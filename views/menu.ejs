@@ -7,9 +7,10 @@
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/nav.scss">
-  <title>SUSHI2GO | Menu</title>
+  
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+  <title>SUSHI2GO | Menu</title>
 </head>
 
 <body class="main-page">
@@ -17,11 +18,11 @@
 
   <main class="menu-container">
     <h1>Menu</h1>
-
     <div class="menu">
       <% items.forEach(function(item) { %>
         <div class="menu-items">
-          <h2><%= item.name %></h2>
+          
+          <h2><%= item.name %></h2> <span> <%= item.cost %></span>
           <img src="<%= item.image %>" alt="<%= item.name %>">
           <div class="button-item-container">
             <button class="add" value="<%= JSON.stringify(item) %>">ADD +</button>
@@ -32,5 +33,6 @@
 
     </div>
   </main>
+
 </body>
 </html>

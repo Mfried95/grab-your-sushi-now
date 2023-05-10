@@ -13,10 +13,10 @@
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/nav.scss" />
-
-  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script src="../public/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
 </head>
+
 
 <body class="main-order">
   <%- include('partials/nav') %>
@@ -44,20 +44,11 @@
     </section>
     <section class="order-details">
       <h2>Order</h2>
-      <% orderDetails.forEach(order=> { %>
-        <ul>
-          <li>Item: <%= order.item_name %>
-          </li>
-          <li>Quantity: <%= order.quantity %>
-          </li>
-          <li>Price: <%= order.price %>
-          </li>
-        </ul>
-        <% }); %>
+
     </section>
   </div>
   <div class="button-container">
-    <button>Send</button>
+    <button id="send-order">Send</button>
     <button>Edit Order</button>
   </div>
 </main>
