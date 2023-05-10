@@ -15,6 +15,7 @@ const getUserWithEmail = email => {
 const login = function(email, password) {
   return getUserWithEmail(email)
     .then(user => {
+      // if (user.password === password) {
       if (bcrypt.compareSync(password, user.password)) {
         return user;
       }
@@ -71,5 +72,13 @@ const getOrderDetails = function (order_id) {
     });
 };
 
+const addUser = function (values) {
+  return db.query('INSERT INTO users (name, email, password, address, phone_number, credit_card) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;', values)
+    .then(data => {
+      console.log(data.rows);
+      return data.rows;
+    });
+};
 
-module.exports = { getMenuItems, addItemstoCart, getUserWithEmail, login, getUserInfo, getOrderDetails, register };
+
+module.exports = { getMenuItems, addItemstoCart, getUserWithEmail, login, getUserInfo, getOrderDetails, register, addUser};

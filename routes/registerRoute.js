@@ -7,24 +7,55 @@
 
 const express = require('express');
 const router = express.Router();
-const cookieSession = require('cookie-session');
+const bcrypt = require('bcrypt');
 const database = require("../db/queries/dbQueries");
+const cookieSession = require("cookie-session");
+
+router.use(
+  cookieSession({
+    name: "session",
+    keys: ["key1"]
+  })
+);
 
 router.get('/', (req, res) => {
-  res.render('register', { user: req.user }); // Pass the user object here
+  if (req.session.user_id) {
+   return res.redirect('/');
+  }
+  let templateVars = {
+    user_id: req.session.user_id,
+    user_email: req.session.email,
+    user_name: req.session.user_name,
+    user_isowner: null
+  };
+  res.render("register", templateVars);
 });
 
 router.post('/', (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, phone, address, 'credit-card': creditCard } = req.body;
+  console.log("+++++++++++++++", req.body)
+  const hash = bcrypt.hashSync(password, 12);
+  const values = [name, email, hash, phone, address, creditCard];
+
   database
-    .register(name, email, password)
+    .addUser(values)
     .then(user => {
-      req.user = user; // Set the req.user object
-      res.cookie('name', user.name);
-      console.log(res);
-      res.redirect('/menu');
+      if (!user) {
+        res.send({ error: "error" });
+        return;
+      }
+      req.session.user_id = user.id;
+      req.session.user_name = user.name;
+      req.session.email = user.email;
+      req.session.phone = user.phone;
+      req.session.address = user.address;
+      req.session.creditCard = user.creditCard;
+      res.redirect("/menu");
     })
-    .catch(err => console.log(err));
+    .catch(e => {
+      console.log("+++++++++++++++", e)
+      res.send(e)
+    });
 });
 
 module.exports = router;
