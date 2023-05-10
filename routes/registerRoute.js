@@ -6,12 +6,12 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const cookieSession = require('cookie-session');
 const database = require("../db/queries/dbQueries");
 
 router.get('/', (req, res) => {
-  res.render('register');
+  res.render('register', { user: req.user }); // Pass the user object here
 });
 
 router.post('/', (req, res) => {
@@ -19,9 +19,10 @@ router.post('/', (req, res) => {
   database
     .register(name, email, password)
     .then(user => {
+      req.user = user; // Set the req.user object
       res.cookie('name', user.name);
       console.log(res);
-      res.redirect('menu');
+      res.redirect('/menu');
     })
     .catch(err => console.log(err));
 });
