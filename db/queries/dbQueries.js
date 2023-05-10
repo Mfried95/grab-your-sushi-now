@@ -80,5 +80,12 @@ const addUser = function (values) {
     });
 };
 
+const updateOrderStatus = function (order_id, status) {
+  return db.query('UPDATE orders SET status = $2 WHERE id = $1 RETURNING *;', [order_id, status])
+    .then(data => {
+      console.log(data.rows);
+      return data.rows;
+    });
+};
 
-module.exports = { getMenuItems, addItemstoCart, getUserWithEmail, login, getUserInfo, getOrderDetails, register, addUser};
+module.exports = { getMenuItems, addItemstoCart, getUserWithEmail, login, getUserInfo, getOrderDetails, register, addUser, updateOrderStatus };
