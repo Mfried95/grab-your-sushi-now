@@ -68,7 +68,10 @@ app.use('/order', orderRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('homepage');
+  let templateVars = {
+    user: req.session.user
+  };
+  res.render("homepage", templateVars);
 });
 
 app.listen(PORT, () => {

@@ -1,0 +1,39 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-success">
+    <a class="navbar-brand" href="/">Sushi-2-Go</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="/"></a>
+
+        <ul>
+          <% if (user_id) { %>
+            <li>
+              Logged in as: <%= user_id %>
+            </li>
+
+            <form class="form-inline" method="POST" action="/logout">
+              <button type="submit" class="btn btn-primary">Logout</button>
+            </form>
+
+            <% } else { %>
+
+              <a href="/register">
+                <button type="submit" class="btn btn-primary">Register</button>
+              </a>
+
+              <a href="/login">
+                <button type="submit" class="btn btn-primary">Login</button>
+              </a>
+
+              <% } %>
+        </ul>
+
+
+      </div>
+    </div>
+  </nav>
+</header>

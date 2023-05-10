@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
     .getMenuItems()
     .then((items) => {
       const templateVars = {
-        user: cookieSession.name,
+        user: req.session.user, //change the variable name
         items,
       };
       res.render("menu", templateVars);
@@ -30,8 +30,8 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
   menuQueries
-.addItemstoCart()
-.then(items);
+    .addItemstoCart()
+    .then(items);
   res.send((items) => {
 
   });

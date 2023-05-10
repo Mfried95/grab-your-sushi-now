@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,23 +12,41 @@
   <nav>
     <div class="logo-container">
       <h2>SUSHI-2-GO</h2>
-      <% if(!user){ %>
-        <a class="nav-item nav-link" href="/register">Register</a>
-        <a class="nav-item nav-link" href="/login">Login</a>
-      <% } else { %>
-        <form action='/logout' method="post">
-          <label form="name"> Logged In As :<%= user.name %>z</label>
-          <button type="submit"> Logout </button>
-        </form>
-      <% } %>
+
       <!-- <span><a href="/login">Login</a></span>
-      <span><a href="/register">Register</a></span>
+      <span><a href="/register">Register</a></span> -->
     </div>
 
-    <ul>
+    <!-- <ul>
       <li><a href="/order">View Order</a></li>
-      <li><a href="/menu">Menu</a></li> -->
+      <li><a href="/menu">Menu</a></li>
+    </ul> -->
+
+    <ul>
+      <% if (user) { %>
+        <li>
+          <%= user.user_name %>
+        </li>
+        <li><a href="/order">View Order</a></li>
+        <li><a href="/menu">Menu</a></li>
+        <form class="form-inline" method="POST" action="/logout">
+          <button type="submit" class="btn btn-primary">Logout</button>
+        </form>
+
+        <% } else { %>
+
+          <a href="/register">
+            <button type="submit" class="btn btn-primary">Register</button>
+          </a>
+
+          <a href="/login">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </a>
+
+          <% } %>
     </ul>
+
   </nav>
 </body>
+
 </html>

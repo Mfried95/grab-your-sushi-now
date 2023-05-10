@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
     res.redirect("/");
   } else {
     let templateVars = {
-      user_id: null
+      user: null
     };
     res.render('login', templateVars);
   }
@@ -31,7 +31,13 @@ router.post("/", (req, res) => {
         res.send("User account doesn't exist. Please register first.");
         return;
       }
-      req.session.user_id = user.id;
+
+      req.session.user = {
+        user_id: user.id,
+        user_name: user.name,
+        user_number: user.phone_number
+      };
+
       res.redirect("menu");
     })
     .catch(err => res.send(err));
