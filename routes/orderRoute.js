@@ -26,4 +26,15 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.post('/', (req, res) => {
+  console.log('order route');
+  console.log(req.body);
+  res.status(200).json('sucess');
+
+  
+
+});
+
+
+
 module.exports = router;
