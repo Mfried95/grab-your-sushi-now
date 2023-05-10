@@ -18,7 +18,6 @@ $(document).ready(function () {
 
     const item = JSON.parse($(this).val());
     orderCart.push(item);
-    console.log("++++++", item, orderCart);
     localStorage.setItem("order-items", JSON.stringify(orderCart));
   });
 
@@ -74,7 +73,42 @@ $(document).ready(function () {
   $(".order-details").append(totalCostElement);
 
 
-  
+  $("#send-order").click(() => {
+    // Create a variable to store the order data
+    const orderData = {
+      orderCart: orderCart,
+      totalCost: totalCost.toFixed(2),
+    };
+
+    console.log("order data", orderData);
+    // Make an AJAX POST request to send the order data
+    $.ajax({
+      url: "/order", // Replace with your actual endpoint URL
+      method: "POST",
+      data: JSON.stringify(orderData),
+      contentType: "application/json",
+      success: function (response) {
+        orderCart = [];
+        console.log('sucess', response);
+        // Clear the order items from local storage
+        localStorage.removeItem("order-items");
+
+        // Clear the click count and update the displayed value
+        clickCount = 0;
+        $(".click-count").text(clickCount).css("color", "black");
+
+        // Clear any displayed order details
+        $(".order-details").empty();
+
+        console.log("Order sent successfully");
+      },
+      error: function(xhr, status, error) {
+        console.log("Error submitting form:", error);
+        console.log("Status code:", xhr.status);
+        console.log("Error message:", xhr.responseText); 
+      },
+    });
+  });
 
 });
 >>>>>>> 498d9a6f471e6c7f2943aa8b0f4c31be650a4c70

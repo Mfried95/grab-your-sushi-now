@@ -51,7 +51,6 @@ const getMenuItems = function () {
     });
 };
 
-module.exports = { getMenuItems };
 const addItemstoCart = function() {
   return db.query('INSERT * INTO orders ');
 
