@@ -10,6 +10,7 @@ const router  = express.Router();
 const { getUserInfo, getOrderDetails } = require("../db/queries/dbQueries");
 
 router.get('/', async (req, res) => {
+  console.log('orderRoute');
   try {
     // Fetch user information
     const userInfo = await getUserInfo();
@@ -24,5 +25,14 @@ router.get('/', async (req, res) => {
     res.status(500).send('Internal server error');
   }
 });
+
+router.post('/', (req, res) => {
+  console.log('order route');
+  console.log(req.body);
+  res.status(200).json('sucess');
+
+});
+
+
 
 module.exports = router;

@@ -1,12 +1,13 @@
 // load .env data into process.env
 require('dotenv').config();
-
+require('body-parser');
 // Web server config
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
 const cookieSession = require('cookie-session');
 
+const bodyParser = require('body-parser');
 
 
 const PORT = process.env.PORT || 8080;
@@ -38,6 +39,7 @@ app.use(cookieSession({
 
 app.use(express.static('public'));
 
+app.use(bodyParser.json());
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
@@ -68,8 +70,10 @@ app.use('/order', orderRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
+  console.log('testing');
   res.render('homepage');
 });
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

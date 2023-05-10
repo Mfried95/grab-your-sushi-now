@@ -6,11 +6,9 @@
  */
 
 const express = require("express");
-const db = require("../db/connection");
-const cookieSession = require("cookie-session");
 const router = express.Router();
+const cookieSession = require("cookie-session");
 const menuQueries = require("../db/queries/dbQueries");
-
 
 router.get("/", (req, res) => {
   menuQueries
@@ -26,16 +24,5 @@ router.get("/", (req, res) => {
       res.status(500).json({ error: err.message });
     });
 });
-
-
-router.post("/", (req, res) => {
-  menuQueries
-.addItemstoCart()
-.then(items);
-  res.send((items) => {
-
-  });
-});
-
 
 module.exports = router;
