@@ -1,6 +1,4 @@
 // Client facing scripts here
-<<<<<<< HEAD
-=======
 
 
 $(document).ready(function () {
@@ -111,4 +109,3 @@ $(document).ready(function () {
   });
 
 });
->>>>>>> 498d9a6f471e6c7f2943aa8b0f4c31be650a4c70
