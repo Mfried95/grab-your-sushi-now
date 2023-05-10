@@ -1,13 +1,11 @@
 // Client facing scripts here
 
-const orderCart = [];
 
 $(document).ready(function () {
 
-  let orderCart = localStorage.getItem('order-items');
-  orderCart = JSON.parse(orderCart);
+  let orderCartCookie = localStorage.getItem('order-items');
+  let orderCart = orderCartCookie ? JSON.parse(orderCartCookie) : [];
   $('#ordercart-length').text(orderCart.length);
-
 
   let clickCount = 0;
 
@@ -38,10 +36,9 @@ $(document).ready(function () {
 
 
     let cartCount = localStorage.setItem('order-items', JSON.stringify(orderCart));
-    $(".click-count").text(`${cartCount.length}`).css('color', "red");
+    $(".click-count").text(`${cartCount}`).css('color', "red");
 
   });
-
 
 
   let orderItems = localStorage.getItem("order-items");
@@ -73,4 +70,8 @@ $(document).ready(function () {
   // Display the total cost with two decimal points
   let totalCostElement = $("<div>").text("Total Cost: $" + totalCost.toFixed(2));
   $(".order-details").append(totalCostElement);
+
+
+  
+
 });
