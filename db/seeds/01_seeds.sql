@@ -1,6 +1,6 @@
 -- Users table seeds here (Example)
 INSERT INTO users (name, email, password, phone_number, address, credit_card) VALUES
-('Yusuf', 'yusuf@gmail.com', '$2a$10$cOqAo6Mn61euv3UmbUVyfOeSVg9Tl/mDULtODMtMjj8RwZE0T7HOi', '123 001', '12 Living arts street, Ontario', '4567 3456 7891'),
+('Yusuf', 'yusuf@gmail.com', '$2a$12$cXcMEuZcb2uCtTAut6W4TucPoSSi3j7bh.o4pSdKbnMBr4q2t9a2S', '123 001', '12 Living arts street, Ontario', '4567 3456 7891'),
 ('Kira', 'kira@gmail.com', '$2a$10$cOqAo6Mn61euv3UmbUVyfOeSVg9Tl/mDULtODMtMjj8RwZE0T7HOi', '123 002', '11 City Centre Dr street, Ontario', '6789 3467 1234'),
 ('Alice', 'alice@gmail.com', '$2a$10$cOqAo6Mn61euv3UmbUVyfOeSVg9Tl/mDULtODMtMjj8RwZE0T7HOi', '123 003', '20 Northstar, Toronto', '1234 5678 9101');
 

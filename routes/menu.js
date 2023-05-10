@@ -6,11 +6,6 @@
  */
 
 const express = require("express");
-<<<<<<< HEAD
-=======
-const db = require("../db/connection");
-const cookieSession = require("cookie-session");
->>>>>>> 498d9a6f471e6c7f2943aa8b0f4c31be650a4c70
 const router = express.Router();
 const menuQueries = require("../db/queries/dbQueries");
 
@@ -29,21 +24,4 @@ router.get("/", (req, res) => {
     });
 });
 
-<<<<<<< HEAD
-=======
-
-router.post("/", (req, res) => {
-  const orderMenu = req.body.items;
-  menuQueries
-    .addItemsToCart(orderMenu)
-    .then(() => {
-      res.sendStatus(200);
-    })
-    .catch((err) => {
-      res.status(500).json({ error: err.message });
-    });
-});
-
-
->>>>>>> 498d9a6f471e6c7f2943aa8b0f4c31be650a4c70
 module.exports = router;
