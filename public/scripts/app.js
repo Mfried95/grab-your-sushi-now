@@ -25,6 +25,8 @@ $(document).ready(function () {
   // parse the JSON string into an array of objects
   let itemsArray = JSON.parse(orderItems);
   
+  let totalCost = 0;
+
   // loop through the array to access each object
   for (let i = 0; i < itemsArray.length; i++) {
     let currentItem = itemsArray[i];
@@ -36,6 +38,8 @@ $(document).ready(function () {
     itemDiv.append("<h3>" + currentItem.name + "</h3>");
     itemDiv.append("<p>Cost: $" + currentItem.cost + "</p>");
     
+    totalCost += currentItem.cost;
+
     // append the itemDiv to the "order-details" section
     $(".order-details").append(itemDiv);
   }

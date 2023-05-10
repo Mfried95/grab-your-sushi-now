@@ -87,14 +87,26 @@ body{
 
 .add{
   background-color: rgb(114, 239, 114);
+  border: none;
+  padding: 0.5em;
+  font-weight: bold;
   cursor: pointer;
+}
+
+.add:hover{
+  background-color: green;
 }
 
 .remove{
   background-color: rgb(233, 122, 122);
+  border: none;
+  font-weight: bold;
   cursor: pointer;
 }
 
+.remove:hover{
+  background-color: red;
+}
   
 // ORDER PAGE
 
