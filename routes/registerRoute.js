@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const database = require("../db/queries/dbQueries");
 const cookieSession = require("cookie-session");
 
