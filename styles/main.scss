@@ -23,7 +23,7 @@ body{
   
   ul{
     display: flex;
-    gap: 2em;
+    gap: 3em;
   }
 
     li{
@@ -77,6 +77,12 @@ body{
     width: 200px;
     height: 150px;
   }
+  span{
+    font-size: 1.5em;
+  }
+  h2{
+    margin: 0;
+  }
 }
 
 .button-item-container{
@@ -116,14 +122,18 @@ body{
     background-color: #F5F5F5;
     width: 75%;
     margin: 1.5em auto;
-    height: 600px;
     border-radius: 1rem;
     align-items: center;
-
+    line-height: 1.5em;
+    font-size: 25px;
     h2{
       text-align: center;
       font-size: 30px;
       padding-top: 0.5em;
+    }
+
+    .order-details{
+      padding: 1em;
     }
 
   }
@@ -149,5 +159,11 @@ body{
     overflow: scroll;
   }
   
+  .click-count{
+    position: absolute;
+    font-size: 25px;
+    margin-left: 3.8em;
+    padding-left: 0.5em;
+  }
 
 }

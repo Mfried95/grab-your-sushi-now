@@ -3,44 +3,74 @@
 const orderCart = [];
 
 $(document).ready(function () {
+
+  let orderCart = localStorage.getItem('order-items');
+  orderCart = JSON.parse(orderCart);
+  $('#ordercart-length').text(orderCart.length);
+
+
+  let clickCount = 0;
+
   $("button.add").on("click", function () {
+
+    clickCount++;
+    $(".click-count").text(`${clickCount}`).css('color', "red");
+
     const item = JSON.parse($(this).val());
     orderCart.push(item);
+    console.log("++++++", item, orderCart);
     localStorage.setItem("order-items", JSON.stringify(orderCart));
   });
 
+
   $(".remove").click(function () {
-    const item = $(this).val();
-    const index = orderCart.indexOf(item);
-    if (index > -1) {
-      orderCart.splice(index, 1);
-      localStorage.setItem("order-items", JSON.stringify(orderCart));
-      localStorage.removeItem(item); // Remove the item from the local storage
-    }
+    
+    const item = JSON.parse($(this).val());
+    console.log(item);
+
+    let orderCart = localStorage.getItem('order-items');
+    orderCart = JSON.parse(orderCart);
+    console.log(orderCart);
+
+    const index = orderCart.findIndex(x => x.id === item.id);
+    if (index < 0) return;
+    orderCart.splice(index, 1);
+
+
+    let cartCount = localStorage.setItem('order-items', JSON.stringify(orderCart));
+    $(".click-count").text(`${cartCount.length}`).css('color', "red");
+
   });
 
 
+
   let orderItems = localStorage.getItem("order-items");
-  
-  // parse the JSON string into an array of objects
   let itemsArray = JSON.parse(orderItems);
   
+  let itemCounts = {};
   let totalCost = 0;
-
-  // loop through the array to access each object
+  
   for (let i = 0; i < itemsArray.length; i++) {
     let currentItem = itemsArray[i];
-  
-    // create a new div element for the current item
-    let itemDiv = $("<div>");
-  
-    // set the div's content to the properties of the currentItem object
-    itemDiv.append("<h3>" + currentItem.name + "</h3>");
-    itemDiv.append("<p>Cost: $" + currentItem.cost + "</p>");
     
-    totalCost += currentItem.cost;
-
-    // append the itemDiv to the "order-details" section
-    $(".order-details").append(itemDiv);
+    if (itemCounts[currentItem.name]) {
+      itemCounts[currentItem.name]++;
+    } else {
+      itemCounts[currentItem.name] =  1;
+    }
+    
+    // Add the cost of the current item to the totalCost
+    totalCost += parseFloat(currentItem.cost);
   }
+  
+  // Display the item counts
+  for (let itemName in itemCounts) {
+    let count = itemCounts[itemName];
+    let countElement = $("<div>").text(itemName + ": " + count);
+    $(".order-details").append(countElement);
+  }
+  
+  // Display the total cost with two decimal points
+  let totalCostElement = $("<div>").text("Total Cost: $" + totalCost.toFixed(2));
+  $(".order-details").append(totalCostElement);
 });

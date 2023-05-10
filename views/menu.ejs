@@ -17,11 +17,11 @@
   
   <main class="menu-container">
     <h1>Menu</h1>
-    
     <div class="menu">
       <% items.forEach(function(item) { %>
         <div class="menu-items">
-          <h2><%= item.name %></h2>
+          
+          <h2><%= item.name %></h2> <span> <%= item.cost %></span>
           <img src="<%= item.image %>" alt="<%= item.name %>">
           <div class="button-item-container">
             <button class="add" value="<%= JSON.stringify(item) %>">ADD +</button>
