@@ -35,6 +35,7 @@ $(document).ready(function () {
     // set the div's content to the properties of the currentItem object
     itemDiv.append("<h3>" + currentItem.name + "</h3>");
     itemDiv.append("<p>Cost: $" + currentItem.cost + "</p>");
+    
     // append the itemDiv to the "order-details" section
     $(".order-details").append(itemDiv);
   }
