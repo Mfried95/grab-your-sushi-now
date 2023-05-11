@@ -6,8 +6,8 @@
  */
 
 const express = require('express');
-const router  = express.Router();
-const { getUserInfo, getOrderDetails } = require("../db/queries/dbQueries");
+const router = express.Router();
+const { getUserInfo, getOrderDetails, addItemstoCart, addItemsToOrders, getUserOrderHistory } = require("../db/queries/dbQueries");
 
 router.get('/', async (req, res) => {
   console.log('orderRoute');
@@ -18,8 +18,13 @@ router.get('/', async (req, res) => {
     // Fetch order details for the first order
     const orderDetails = await getOrderDetails(1);
 
+    // Fetch order history
+    const orderHistory = await getUserOrderHistory();
+
+    console.log('user history', orderHistory);
+
     // Render the order page and pass the user information and order details
-    res.render('order', { userInfo, orderDetails });
+    res.render('order', { userInfo, orderDetails, orderHistory });
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal server error');
@@ -30,8 +35,21 @@ router.get('/', async (req, res) => {
 router.post('/', (req, res) => {
   console.log('order route');
   console.log(req.body);
-  res.status(200).json('sucess');
+  //extracting variables from body
+  let orderCart = req.body.orderCart;
+  let totalCost = req.body.totalCost;
 
+  //function call to insert into orders table
+  addItemsToOrders([totalCost])
+    .then(res => {
+      let order_id = res[0].id;
+      for (let itemId in orderCart) {
+        let item = orderCart[itemId];
+        addItemstoCart(item.id, item.quantity, item.cost, order_id);
+      }
+    });
+
+  res.status(200).json('sucess');
 });
 
 

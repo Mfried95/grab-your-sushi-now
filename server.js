@@ -47,6 +47,7 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const homepageRoutes = require('./routes/homepage');
 const loginRoutes = require('./routes/loginRoute');
+const logoutRoutes = require('./routes/logoutRoute');
 const registerRoutes = require('./routes/registerRoute');
 const menuRoutes = require('./routes/menu');
 const orderRoutes = require('./routes/orderRoute');
@@ -61,6 +62,7 @@ app.use('/users', usersRoutes);
 app.use('/homepage', homepageRoutes);
 app.use('/menu', menuRoutes);
 app.use('/login', loginRoutes);
+app.use('/logout', logoutRoutes);
 app.use('/register', registerRoutes);
 app.use('/order', orderRoutes);
 app.use('/restaurant', restaurantRoutes);
@@ -72,8 +74,10 @@ app.use('/restaurant', restaurantRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  console.log('testing');
-  res.render('homepage');
+  let templateVars = {
+    user: req.session.user
+  };
+  res.render("homepage", templateVars);
 });
 
 
