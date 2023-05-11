@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Restaurant Page</title>
 
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
@@ -14,61 +14,78 @@
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/nav.scss">
 
-  <script
-  src="https://code.jquery.com/jquery-3.6.4.min.js"
-  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-  crossorigin="anonymous"></script>
-  
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script defer src="/scripts/app.js"></script>
+
 </head>
 
 <body class="home-body">
   <%- include('partials/nav') %>
 
-  <div class="resturant-container">
-    <div class="current-orders">
-      <h2>Orders</h2>
-      <% let groupedData = {} %>
-      <% data.forEach(item => {
-           if (item.status) {
-             if (groupedData[item.id]) {
-               groupedData[item.id].items.push({name: item.name, quantity: item.quantity, price: item.items_price});
-               groupedData[item.id].total += parseFloat(item.total);
-             } else {
-               groupedData[item.id] = {items: [{name: item.name, quantity: item.quantity, price: item.items_price}], total: parseFloat(item.total)};
-             }
-           }
-         })
-      %>
-      <% for (let itemID in groupedData) { %>
-        <h3>Order <%= itemID %>:</h3>
-        <ul>
-          <% groupedData[itemID].items.forEach(item => { %>
-            <li><%= item.quantity %> x <%= item.name %> - <%= item.price %> </li>
-          <% }) %>
-          <li class="total"><strong> Total: $ <%= groupedData[itemID].total.toFixed(2) %></strong></li>
-        </ul>
-        <section class="order-buttons">
-          <button  class="confirm" onclick="confirmOrder(<%= itemID %>)">Confirm</button>
-          <button class="ready" onclick="markReady(<%= itemID %>)">Ready</button>
-        </section>
-      <% } %>
+    <div class="resturant-container">
+      <div class="current-orders">
+        <h2>Orders</h2>
+        <% let groupedData={} %>
+          <% data.forEach(item=> {
+            if (item.status != 'Order Completed!') {
+            if (groupedData[item.id]) {
+            groupedData[item.id].items.push({name: item.name, quantity: item.quantity, price: item.items_price});
+            groupedData[item.id].total += parseFloat(item.total);
+            } else {
+            groupedData[item.id] = {items: [{name: item.name, quantity: item.quantity, price: item.items_price}], total:
+            parseFloat(item.total)};
+            }
+            }
+            })
+            %>
+            <% for (let itemID in groupedData) { %>
+              <h3>Order <%= itemID %>:</h3>
+              <ul>
+                <% groupedData[itemID].items.forEach(item=> { %>
+                  <li>
+                    <%= item.quantity %> x <%= item.name %> - <%= item.price %>
+                  </li>
+                  <% }) %>
+                    <li class="total"><strong> Total: $ <%= groupedData[itemID].total.toFixed(2) %></strong></li>
+              </ul>
+              <section class="order-buttons">
+                <button class="confirm" value="<%= itemID %>">Confirm</button>
+                <button class="ready" value="<%= itemID %>">Ready</button>
+              </section>
+              <% } %>
+      </div>
+      <div class="prev-order">
+        <h2>Order history</h2>
+        <% let groupedData1={} %>
+          <% data.forEach(item=> {
+            if (item.status === 'Order Completed!') {
+            if (groupedData1[item.id]) {
+            groupedData1[item.id].items.push({name: item.name, quantity: item.quantity, price: item.items_price});
+            groupedData1[item.id].total += parseFloat(item.total);
+            } else {
+            groupedData1 [item.id] = {items: [{name: item.name, quantity: item.quantity, price: item.items_price}],
+            total:
+            parseFloat(item.total)};
+            }
+            }
+            })
+            %>
+            <% for (let itemID in groupedData1) { %>
+              <h3>Order <%= itemID %>:</h3>
+              <ul>
+                <% groupedData1[itemID].items.forEach(item=> { %>
+                  <li>
+                    <%= item.quantity %> x <%= item.name %> - <%= item.price %>
+                  </li>
+                  <% }) %>
+                    <li class="total"><strong> Total: $ <%= groupedData1[itemID].total.toFixed(2) %></strong></li>
+              </ul>
+
+              <% } %>
+
+      </div>
     </div>
-    <div class="prev-order">
-      <h2>Order history</h2>
-      <% data.forEach(item => {
-           if (!item.status) { %>
-             <h3>Order <%= item.id %>:</h3>
-             <ul>
-               <% item.items.forEach(item => { %>
-                 <li><%= item.quantity %> x <%= item.name %> - <%= item.price %> </li>
-               <% }) %>
-               <li class="total"><strong> Total: $ <%= item.total.toFixed(2) %></strong></li>
-             </ul>
-       <% }
-         })
-      %>
-    </div>
-  </div>
 </body>
 
 </html>
