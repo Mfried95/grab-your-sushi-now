@@ -26,7 +26,7 @@ router.post("/confirm", (req, res) => {
   updateOrderStatus(req.body.order_id, 'confirmed')
     .then((data) => {
       let message = '';
-      sendSms('+16476095630', 'Your order is in progress!');
+      sendSms('+16476095630', 'Your order is currently in progress!');
       res.send({data, message});
     });
 });
@@ -35,7 +35,7 @@ router.post("/complete", (req, res) => {
   updateOrderComplete(req.body.order_id, 'completed')
     .then((data) => {
       let message = '';
-      sendSms('+16476095630', 'Your order is complete for pickup!');
+      sendSms('+16476095630', 'Your order is complete for pickup! Thank you for ordering with us!');
       res.send({data, message});
     });
 });
