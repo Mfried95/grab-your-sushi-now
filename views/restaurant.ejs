@@ -24,24 +24,51 @@
 <body class="home-body">
   <%- include('partials/nav') %>
 
-  <div class="resturant-contianer">
+  <div class="resturant-container">
     <div class="current-orders">
       <h2>Orders</h2>
-          
-
-      <section>
-        <button>Confirmed</button>
-        <button>Ready</button>
-      </section>
+      <% let groupedData = {} %>
+      <% data.forEach(item => {
+           if (item.status) {
+             if (groupedData[item.id]) {
+               groupedData[item.id].items.push({name: item.name, quantity: item.quantity, price: item.items_price});
+               groupedData[item.id].total += parseFloat(item.total);
+             } else {
+               groupedData[item.id] = {items: [{name: item.name, quantity: item.quantity, price: item.items_price}], total: parseFloat(item.total)};
+             }
+           }
+         })
+      %>
+      <% for (let itemID in groupedData) { %>
+        <h3>Order <%= itemID %>:</h3>
+        <ul>
+          <% groupedData[itemID].items.forEach(item => { %>
+            <li><%= item.quantity %> x <%= item.name %> - <%= item.price %> </li>
+          <% }) %>
+          <li class="total"><strong> Total: $ <%= groupedData[itemID].total.toFixed(2) %></strong></li>
+        </ul>
+        <section class="order-buttons">
+          <button  class="confirm" onclick="confirmOrder(<%= itemID %>)">Confirm</button>
+          <button class="ready" onclick="markReady(<%= itemID %>)">Ready</button>
+        </section>
+      <% } %>
     </div>
     <div class="prev-order">
       <h2>Order history</h2>
+      <% data.forEach(item => {
+           if (!item.status) { %>
+             <h3>Order <%= item.id %>:</h3>
+             <ul>
+               <% item.items.forEach(item => { %>
+                 <li><%= item.quantity %> x <%= item.name %> - <%= item.price %> </li>
+               <% }) %>
+               <li class="total"><strong> Total: $ <%= item.total.toFixed(2) %></strong></li>
+             </ul>
+       <% }
+         })
+      %>
     </div>
-
   </div>
-
 </body>
-
-
 
 </html>

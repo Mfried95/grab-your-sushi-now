@@ -107,6 +107,8 @@ $(document).ready(function() {
     });
   });
 
+  $
+
 });
 
 const createPayload = () => {
@@ -136,4 +138,12 @@ const createPayload = () => {
   };
 
   return payload;
+
+
+
 };
+
+
+
+
+

@@ -60,15 +60,17 @@ body{
     width: 75%;
     margin: 1.5em auto;
     border-radius: 1rem;
+    h1{
+      text-align: center;
+      padding: 1em;
+    }
   }
 
   .menu {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
-    h1{
-      text-align: center;
-    }
+
   }
 
   .menu-items {
@@ -178,24 +180,71 @@ body{
     background-color: black;
   }
 
-  .resturant-contianer{
+  .resturant-container{
     display: flex;
     justify-content: center;
     margin-top: 10%;
     gap: 1em;
+
+    .current-orders{
+      background-color: white;
+      height: 500px;
+      width: 400px;
+      text-align: center;
+      overflow: scroll;
+      list-style: none;
+      line-height: 1.5rem;
+      font-size: 20px;
+      text-align: left;
+      padding: 1em;
+      font-family: sans-serif;
+    }
+
+    .prev-order{
+      background-color: white;
+      width: 300px;
+      text-align: center;
+    }
+  
+    li{
+      list-style: none;
+      padding-bottom: 0.5em;
+    }
+  
+  
+    .order-buttons{
+      display: flex;
+      border-bottom: solid 1px black;
+      padding: 1em;
+      justify-content: center;
+      gap: 1.5em;
+    }
+
+    .total{
+      font-size: 25px;
+     padding-top: 1em;
+    }
+
+    h3{
+      text-align: center;
+    }
+
+    .confirm, .ready{
+      cursor: pointer;
+      height: 40px;
+      border-radius: 2em;
+      width: 100px;
+      border: solid 1px black;
+    }
+
+    .confirm:hover, .ready:hover {
+      background-color: rgb(233, 122, 122);;
+    }
+
   }
 
-  .current-orders{
-    background-color: white;
-    height: 500px;
-    width: 300px;
-    text-align: center;
-  }
+  
 
-  .prev-order{
-    background-color: white;
-    width: 300px;
-    text-align: center;
-  }
+  
 
 }

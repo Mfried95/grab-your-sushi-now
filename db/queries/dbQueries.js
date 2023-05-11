@@ -69,13 +69,19 @@ const addItemstoCart = function(menu_item_id, quantity, total_cost, order_id) {
 };
 
 
-const showOrdersToRestaurant = function() {
-  return db.query('SELECT orders.id, users.id, users.name, users.email, users.address, users.phone_number, users.credit_card FROM orders JOIN cart_items on orders.id = cart_items.order_id JOIN users ON orders.user_id = users.id;')
-    .then(data => {
-      console.log(data.rows);
+const showOrdersToRestaurant = function () {
+  return db
+    .query(
+      `select orders.id, users.name, menu_items.name, cart_items.quantity, cart_items.total_cost as items_price, orders.total, orders.status
+      from orders join cart_items on orders.id = cart_items.order_id JOIN users ON orders.user_id = users.id
+      join menu_items ON menu_items.id = cart_items.menu_item_id
+      WHERE orders.status = true;`
+    )
+    .then((data) => {
       return data.rows;
     });
 };
+
 
 const getUserInfo = function() {
   return db.query('SELECT users.id, users.name, users.email, users.address, users.phone_number, users.credit_card from users where id=2;')
@@ -93,6 +99,7 @@ const getUserOrderHistory = function() {
     });
 };
 
+
 const getOrderDetails = function(order_id) {
   return db.query('SELECT * FROM cart_items WHERE order_id = $1', [order_id])
     .then(data => {
@@ -100,6 +107,7 @@ const getOrderDetails = function(order_id) {
       return data.rows;
     });
 };
+
 
 const addUser = function(values) {
   return db.query('INSERT INTO users (name, email, password, address, phone_number, credit_card) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;', values)
@@ -110,4 +118,4 @@ const addUser = function(values) {
 };
 
 
-module.exports = { getMenuItems, addItemstoCart, getUserWithEmail, login, getUserInfo, getOrderDetails, register, addUser, addItemsToOrders, getUserOrderHistory };
+module.exports = { getMenuItems, addItemstoCart, getUserWithEmail, login, getUserInfo, getOrderDetails, register, addUser, addItemsToOrders, getUserOrderHistory, showOrdersToRestaurant };

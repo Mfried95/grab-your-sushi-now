@@ -7,12 +7,19 @@
 
 const express = require("express");
 const router = express.Router();
-const dbQueries = require("../db/queries/dbQueries");
 const db = require("../db/connection");
+const showOrdersToRestaurant = require("../db/queries/dbQueries");
 
 
 router.get("/", (req, res) => {
-  res.render("restaurant",);
+  showOrdersToRestaurant
+    .showOrdersToRestaurant()
+    .then((data) => {
+      res.render("restaurant", { data: JSON.stringify(data.rows) });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
 });
   
 
