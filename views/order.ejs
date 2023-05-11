@@ -48,9 +48,19 @@
     </section>
   </div>
   <div class="button-container">
-    <button id="send-order">Send</button>
-    <button>Edit Order</button>
+    <button id="send-order">Place Order</button>
+    <!-- <button>Edit Order</button> -->
   </div>
+  <h2>Order History</h2>
+  <section class="user-order-history">
+    <% orderHistory.forEach(order=> { %>
+      <ul>
+        <li>Order ID: <%= order.id %>, Status: <%= order.status %>
+        </li>
+
+      </ul>
+      <% }); %>
+  </section>
 </main>
 
 </html>
