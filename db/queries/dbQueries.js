@@ -119,11 +119,20 @@ const addUser = function(values) {
 
 //update order status
 const updateOrderStatus = function (order_id, status) {
-  return db.query(`UPDATE orders SET status = 'Order Ready!' WHERE id = $1 RETURNING *;`, [order_id, status])
+  return db.query(`UPDATE orders SET status = 'Order in Progress!' WHERE id = $1 RETURNING *;`, [order_id, status])
     .then(data => {
       console.log(data.rows);
       return data.rows;
     });
 };
 
-module.exports = { getMenuItems, addItemstoCart, getUserWithEmail, login, getUserInfo, getOrderDetails, register, addUser, addItemsToOrders, getUserOrderHistory, showOrdersToRestaurant };
+//Update order complete
+const updateOrderComplete = function (order_id, status) {
+  return db.query(`UPDATE orders SET status = 'Order Completed!' WHERE id = $1 RETURNING *;`, [order_id, status])
+    .then(data => {
+      console.log(data.rows);
+      return data.rows;
+    });
+};
+
+module.exports = { getMenuItems, addItemsToCart, getUserWithEmail, login, getUserInfo, getOrderDetails, register, addUser, addItemsToOrders, getUserOrderHistory, showOrdersToRestaurant, updateOrderStatus, updateOrderComplete };
