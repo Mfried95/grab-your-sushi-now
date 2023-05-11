@@ -9,6 +9,7 @@ const express = require('express');
 const router  = express.Router();
 const dbQueries = require('../db/queries/dbQueries');
 const db = require('../db/connection');
+const twilio = require('twilio');
 
 router.get('/', (req, res) => {
   dbQueries.getUserWithEmail(req.body.email)
@@ -34,12 +35,30 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  dbQueries.addItemstoCart(req.body)
-    if (req.body.quantity > 0) {
-      res.redirect('/restaurant');
+  const accountSid = "";
+  const authToken = "";
+  const client = new twilio(accountSid, authToken);
+  if (req.body.order) {
+    client.messages
+      .create({
+        body: `Your order is complete!`,
+        from: '+1',
+        to: '+1'
+      })
+      .then(message => console.log(message.sid));
+      dbQueries.updateOrderStatus(req.body.order)
     } else {
-      res.redirect('/restaurant');
-    }
+      client.messages
+      .create({
+        body: `Your order has been accepted!`,
+        from: '+1',
+        to: '+1'
+      })
+      .then(message => console.log(message.sid));
+      dbQueries.updateOrderStatus(req.body.order)
+  }
+  res.redirect('restaurant');
 });
+
 
 module.exports = router;
