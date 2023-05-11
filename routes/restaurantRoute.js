@@ -15,14 +15,13 @@ router.get("/", (req, res) => {
   showOrdersToRestaurant
     .showOrdersToRestaurant()
     .then((data) => {
-      res.render("restaurant", { data: JSON.stringify(data.rows) });
+      res.render("restaurant", { data });
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
     });
 });
   
-
 
 
 module.exports = router;
