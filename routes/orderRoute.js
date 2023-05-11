@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { getUserInfo, getOrderDetails, addItemstoCart, addItemsToOrders, getUserOrderHistory } = require("../db/queries/dbQueries");
+const { getUserInfo, getOrderDetails, addItemsToCart, addItemsToOrders, getUserOrderHistory } = require("../db/queries/dbQueries");
 
 router.get('/', async (req, res) => {
   console.log('orderRoute');
@@ -45,11 +45,11 @@ router.post('/', (req, res) => {
       let order_id = res[0].id;
       for (let itemId in orderCart) {
         let item = orderCart[itemId];
-        addItemstoCart(item.id, item.quantity, item.cost, order_id);
+        addItemsToCart(item.id, item.quantity, item.cost, order_id);
       }
     });
 
-  res.status(200).json('sucess');
+  res.status(200).json('success');
 });
 
 
