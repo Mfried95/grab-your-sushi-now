@@ -66,6 +66,10 @@ app.use('/logout', logoutRoutes);
 app.use('/register', registerRoutes);
 app.use('/order', orderRoutes);
 app.use('/restaurant', restaurantRoutes);
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 // Note: mount other resources here, using the same pattern above
 
 // Home page

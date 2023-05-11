@@ -7,7 +7,8 @@
 
 const express = require('express');
 const router = express.Router();
-const { getUserInfo, getOrderDetails, addItemstoCart, addItemsToOrders, getUserOrderHistory } = require("../db/queries/dbQueries");
+const { getUserInfo, getOrderDetails, addItemsToCart, addItemsToOrders, getUserOrderHistory } = require("../db/queries/dbQueries");
+const sendSms = require('../helpers');
 
 router.get('/', async (req, res) => {
   console.log('orderRoute');
@@ -31,6 +32,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+
 router.post('/', (req, res) => {
   console.log('order route');
   console.log(req.body);
@@ -42,13 +44,18 @@ router.post('/', (req, res) => {
   addItemsToOrders([totalCost])
     .then(res => {
       let order_id = res[0].id;
+      let message = '';
       for (let itemId in orderCart) {
         let item = orderCart[itemId];
-        addItemstoCart(item.id, item.quantity, item.cost, order_id);
+        message += `Item: ${item.name}, Quantity: ${item.quantity}, Cost: ${item.cost} \n`;
+        addItemsToCart(item.id, item.quantity, item.cost, order_id);
+        console.log(item.id);
       }
+      sendSms('+16476095630', 'Your order has been placed!');
+      sendSms('+16476095630', 'The order details are: \n' + message);
     });
 
-  res.status(200).json('sucess');
+  res.status(200).json('success');
 });
 
 
