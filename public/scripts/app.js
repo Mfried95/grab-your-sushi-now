@@ -132,7 +132,7 @@ const createPayload = () => {
 
   payload = {
     orderCart: orderCart,
-    totalCost: totalCost
+    totalCost: totalCost.toFixed(2)
   };
 
   return payload;
