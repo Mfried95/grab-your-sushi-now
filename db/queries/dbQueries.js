@@ -118,8 +118,8 @@ const addUser = function(values) {
 };
 
 //update order status
-const updateOrderStatus = function (order_id, status) {
-  return db.query(`UPDATE orders SET status = 'Order in Progress!' WHERE id = $1 RETURNING *;`, [order_id, status])
+const updateOrderStatus = function (order_id) {
+  return db.query(`UPDATE orders SET status = 'Order in Progress!' WHERE id = $1 RETURNING *;`, [order_id])
     .then(data => {
       console.log(data.rows);
       return data.rows;
@@ -127,8 +127,8 @@ const updateOrderStatus = function (order_id, status) {
 };
 
 //Update order complete
-const updateOrderComplete = function (order_id, status) {
-  return db.query(`UPDATE orders SET status = 'Order Completed!' WHERE id = $1 RETURNING *;`, [order_id, status])
+const updateOrderComplete = function (order_id) {
+  return db.query(`UPDATE orders SET status = 'Order Completed!' WHERE id = $1 RETURNING *;`, [order_id])
     .then(data => {
       console.log(data.rows);
       return data.rows;
