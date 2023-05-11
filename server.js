@@ -50,6 +50,7 @@ const loginRoutes = require('./routes/loginRoute');
 const registerRoutes = require('./routes/registerRoute');
 const menuRoutes = require('./routes/menu');
 const orderRoutes = require('./routes/orderRoute');
+const restaurantRoutes = require('./routes/restaurantRoute');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -62,7 +63,7 @@ app.use('/menu', menuRoutes);
 app.use('/login', loginRoutes);
 app.use('/register', registerRoutes);
 app.use('/order', orderRoutes);
-
+app.use('/restaurant', restaurantRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -73,6 +74,7 @@ app.get('/', (req, res) => {
   console.log('testing');
   res.render('homepage');
 });
+
 
 
 app.listen(PORT, () => {

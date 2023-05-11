@@ -178,4 +178,24 @@ body{
     background-color: black;
   }
 
+  .resturant-contianer{
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    gap: 1em;
+  }
+
+  .current-orders{
+    background-color: white;
+    height: 500px;
+    width: 300px;
+    text-align: center;
+  }
+
+  .prev-order{
+    background-color: white;
+    width: 300px;
+    text-align: center;
+  }
+
 }
