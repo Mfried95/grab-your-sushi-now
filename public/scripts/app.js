@@ -20,23 +20,27 @@ $(document).ready(function() {
   });
 
 
-  $(".remove").click(function() {
-
+  $(".remove").click(function () {
     const item = JSON.parse($(this).val());
     console.log(item);
 
-    let orderCart = localStorage.getItem('order-items');
+    clickCount--; // Decrement the clickCount
+
+    let orderCart = localStorage.getItem("order-items");
     orderCart = JSON.parse(orderCart);
     console.log(orderCart);
 
-    const index = orderCart.findIndex(x => x.id === item.id);
+    const index = orderCart.findIndex((x) => x.id === item.id);
     if (index < 0) return;
     orderCart.splice(index, 1);
 
+    localStorage.setItem("order-items", JSON.stringify(orderCart)); // Update the orderCart in localStorage
 
-    let cartCount = localStorage.setItem('order-items', JSON.stringify(orderCart));
-    $(".click-count").text(`${cartCount}`).css('color', "red");
-
+    if (clickCount < 1) {
+      $(".click-count").text("").css("color", "red"); // If clickCount is less than one, hide the text
+    } else {
+      $(".click-count").text(`${clickCount}`).css("color", "red"); // Otherwise, display the updated clickCount
+    }
   });
 
 
@@ -98,6 +102,7 @@ $(document).ready(function() {
         $(".order-details").empty();
 
         console.log("Order sent successfully");
+        window.location.reload();
       },
       error: function(xhr, status, error) {
         console.log("Error submitting form:", error);

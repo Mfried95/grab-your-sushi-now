@@ -8,10 +8,12 @@ INSERT INTO users (name, email, password, phone_number, address, credit_card) VA
 
 -- menu_items seeds
 INSERT INTO menu_items ( cost, name, image) VALUES
-  (19.99, 'Maki Rolls', 'https://noshandnibble.blog/content/images/2018/07/cactus-club-park-royal-tuna-stack.jpg'),
-  (29.99, 'California Rolls', 'https://i.pinimg.com/originals/a9/41/af/a941afa55629b13273d70ee77594c0ec.png'),
-  (9.99, 'Sushimi', 'https://images4.alphacoders.com/108/1083345.jpg'),
-  (49.99, 'Dynamite Rolls', 'https://insanelygoodrecipes.com/wp-content/uploads/2020/05/Sushi-1024x536.jpg'),
-  (39.99, 'Avocado', 'https://i.pinimg.com/originals/ec/ad/2c/ecad2ce2df1717b7217e7055845d24ab.jpg');
-
+  (24.99, 'Maki Rolls', 'https://noshandnibble.blog/content/images/2018/07/cactus-club-park-royal-tuna-stack.jpg'),
+  (19.99, 'California Rolls', 'https://i.pinimg.com/originals/a9/41/af/a941afa55629b13273d70ee77594c0ec.png'),
+  (19.99, 'Sushimi', 'https://images4.alphacoders.com/108/1083345.jpg'),
+  (19.99, 'Dynamite Rolls', 'https://insanelygoodrecipes.com/wp-content/uploads/2020/05/Sushi-1024x536.jpg'),
+  (9.99, 'Avocado', 'https://i.pinimg.com/originals/ec/ad/2c/ecad2ce2df1717b7217e7055845d24ab.jpg'),
+  (9.99, 'Yam', 'https://langqidao.com/food/150.Sweet%20Potato%20Tempura%20Roll.jpg'),
+  (19.99, 'Shrimp Tempura', 'https://norecipes.com/wp-content/uploads/2022/02/shrimp-tempura-roll-004.jpg'),
+  (24.99, 'Salmon Roll', 'https://tatyanaseverydayfood.com/wp-content/uploads/2014/04/Spicy-Salmon-Sushi-Roll.jpg');
 
