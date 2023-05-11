@@ -116,7 +116,7 @@ const addUser = function(values) {
 
 //update order status
 const updateOrderStatus = function (order_id, status) {
-  return db.query('UPDATE orders SET status = false WHERE id = $1 RETURNING *;', [order_id, status])
+  return db.query(`UPDATE orders SET status = 'Order Ready!' WHERE id = $1 RETURNING *;`, [order_id, status])
     .then(data => {
       console.log(data.rows);
       return data.rows;
