@@ -70,7 +70,10 @@ const addItemstoCart = function(menu_item_id, quantity, total_cost, order_id) {
 
 
 const showOrdersToRestaurant = function() {
-  return db.query('SELECT orders.id, users.id, users.name, users.email, users.address, users.phone_number, users.credit_card FROM orders JOIN cart_items on orders.id = cart_items.order_id JOIN users ON orders.user_id = users.id;')
+  return db.query(`select orders.id, users.name, menu_items.name, cart_items.quantity, cart_items.total_cost as items_price, orders.total, orders.status
+                  from orders join cart_items on orders.id = cart_items.order_id JOIN users ON orders.user_id = users.id
+                  join menu_items ON menu_items.id = cart_items.menu_item_id
+                  WHERE orders.status = true;`)
     .then(data => {
       console.log(data.rows);
       return data.rows;
