@@ -17,24 +17,14 @@
 <body class="main-page">
   <%- include('partials/nav') %>
 
-  <main class="menu-container">
-    <div class="menu-title">
-      <h1>Menu <span class="click-count"></span></h1>
-      <button class="menu-order"><a href="/order">Order Now!</a></button>
-    </div>
-    
-    <div class="menu">
-      <% items.forEach(function(item) { %>
-        <div class="menu-items">
-          
-          <h2><%= item.name %></h2> <span> <%= item.cost %></span>
-          <img src="<%= item.image %>" alt="<%= item.name %>">
-          <div class="button-item-container">
-            <button class="add" value="<%= JSON.stringify(item) %>">ADD +</button>
-        <button class="remove" value="<%= JSON.stringify(item) %>">Remove</button>
-          </div>
-        </div>
-      <% }); %>
+    <main class="menu-container">
+      <div class="menu-title">
+        <h1>Menu <span class="click-count"></span></h1>
+        <button class="menu-order"><a href="/order">Order Now!</a></button>
+      </div>
+      <div class="menu">
+        <% items.forEach(function(item) { %>
+          <div class="menu-items">
 
             <h2>
               <%= item.name %>

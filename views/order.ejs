@@ -20,41 +20,10 @@
     <%- include('partials/nav') %>
   </body>
 
-
-<body class="main-order">
-  <%- include('partials/nav') %>
-</body>
-
 <main class="order">
-  <h2>View Order</h2>
-  <div class="order-container">
-    <section class="user-info">
-      <h2>User</h2>
-      <% userInfo.forEach(user=> { %>
-        <ul>
-          <li>Name: <%= user.name %>
-          </li>
-          <li>Email: <%= user.email %>
-          </li>
-          <li>Address: <%= user.address %>
-          </li>
-          <li>Phone Number: <%= user.phone_number %>
-          </li>
-          <li>Credit Card: <%= user.credit_card %>
-          </li>
-        </ul>
-        <% }); %>
-    </section>
-    <section class="order-details">
-      <h2>Order</h2>
-
-    </section>
-  </div>
-  <div class="button-container">
-    <button id="send-order">Place Order</button>
-    <!-- <button>Edit Order</button> -->
-  </div>
+ 
   <h2>Order Status</h2>
+  
   <section class="user-order-history">
     <% orderHistory.forEach(order=> { %>
       <ul>
@@ -72,3 +41,4 @@
     </div>
   </main>
 </html>
+
