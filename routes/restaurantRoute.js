@@ -9,10 +9,10 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db/connection");
 const { showOrdersToRestaurant, updateOrderStatus, updateOrderComplete } = require("../db/queries/dbQueries");
-const sendSms = require('../helpers');
+const sendSms = require("../helpers");
+
 
 router.get("/", (req, res) => {
-  //showOrdersToRestaurant
   showOrdersToRestaurant()
     .then((data) => {
       res.render("restaurant", { data });
