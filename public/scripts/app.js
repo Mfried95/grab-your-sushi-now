@@ -1,26 +1,22 @@
 // Client facing scripts here
 
-
-$(document).ready(function() {
-
-  let orderCartCookie = localStorage.getItem('order-items');
+$(document).ready(function () {
+  let orderCartCookie = localStorage.getItem("order-items");
   let orderCart = orderCartCookie ? JSON.parse(orderCartCookie) : [];
-  $('#ordercart-length').text(orderCart.length);
+  $("#ordercart-length").text(orderCart.length);
 
   let clickCount = 0;
 
-  $("button.add").on("click", function() {
-
+  $("button.add").on("click", function () {
     clickCount++;
-    $(".click-count").text(`${clickCount}`).css('color', "red");
+    $(".click-count").text(`${clickCount}`).css("color", "red");
 
     const item = JSON.parse($(this).val());
     orderCart.push(item);
     localStorage.setItem("order-items", JSON.stringify(orderCart));
   });
 
-
-  $(".remove").click(function() {
+  $(".remove").click(function () {
     const item = JSON.parse($(this).val());
     console.log(item);
 
@@ -43,27 +39,26 @@ $(document).ready(function() {
     }
   });
 
-  $(".confirm").on("click", function() {
+  $(".confirm").on("click", function () {
     const order_id = parseInt($(this).val());
     $.ajax({
       url: "/restaurant/confirm",
       method: "POST",
       data: JSON.stringify({ order_id: order_id }),
-      contentType: "application/json"
+      contentType: "application/json",
     });
     window.location.reload();
-    
   });
 
-  $(".ready").on("click", function() {
+  $(".ready").on("click", function () {
     const order_id = parseInt($(this).val());
-    
+
     console.log("complete order id", typeof order_id);
     $.ajax({
       url: "/restaurant/complete",
       method: "POST",
       data: JSON.stringify({ order_id: order_id }),
-      contentType: "application/json"
+      contentType: "application/json",
     });
     window.location.reload();
   });
@@ -95,7 +90,9 @@ $(document).ready(function() {
   }
 
   // Display the total cost with two decimal points
-  let totalCostElement = $("<div>").text("Total Cost: $" + totalCost.toFixed(2));
+  let totalCostElement = $("<div>").text(
+    "Total Cost: $" + totalCost.toFixed(2)
+  );
   $(".order-details").append(totalCostElement);
 
   let payload = createPayload();
@@ -112,9 +109,9 @@ $(document).ready(function() {
       method: "POST",
       data: JSON.stringify(payload),
       contentType: "application/json",
-      success: function(response) {
+      success: function (response) {
         orderCart = [];
-        console.log('sucess', response);
+        console.log("sucess", response);
         // Clear the order items from local storage
         localStorage.removeItem("order-items");
 
@@ -128,7 +125,7 @@ $(document).ready(function() {
         console.log("Order sent successfully");
         window.location.reload();
       },
-      error: function(xhr, status, error) {
+      error: function (xhr, status, error) {
         console.log("Error submitting form:", error);
         console.log("Status code:", xhr.status);
         console.log("Error message:", xhr.responseText);
@@ -137,7 +134,6 @@ $(document).ready(function() {
   });
 
   $;
-
 });
 
 const createPayload = () => {
@@ -152,10 +148,15 @@ const createPayload = () => {
     let currentItem = itemsArray[i];
 
     if (orderCart[currentItem.id]) {
-      orderCart[currentItem.id]['quantity']++;
-      orderCart[currentItem.id]['cost'] += parseFloat(currentItem.cost);
+      orderCart[currentItem.id]["quantity"]++;
+      orderCart[currentItem.id]["cost"] += parseFloat(currentItem.cost);
     } else {
-      orderCart[currentItem.id] = { id: currentItem.id, name: currentItem.name, quantity: 1, cost: parseFloat(currentItem.cost) };
+      orderCart[currentItem.id] = {
+        id: currentItem.id,
+        name: currentItem.name,
+        quantity: 1,
+        cost: parseFloat(currentItem.cost),
+      };
     }
     // Add the cost of the current item to the totalCost
     totalCost += parseFloat(currentItem.cost);
@@ -163,11 +164,8 @@ const createPayload = () => {
 
   payload = {
     orderCart: orderCart,
-    totalCost: totalCost.toFixed(2)
+    totalCost: totalCost.toFixed(2),
   };
 
   return payload;
-
-  
 };
-
