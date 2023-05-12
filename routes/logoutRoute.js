@@ -8,6 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 
+//logout page-setup
 router.get('/', (req, res) => {
   req.session = null;
   res.redirect('/');

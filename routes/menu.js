@@ -10,6 +10,7 @@ const router = express.Router();
 const cookieSession = require("cookie-session");
 const menuQueries = require("../db/queries/dbQueries");
 
+//menu page-setup
 router.get("/", (req, res) => {
   menuQueries
     .getMenuItems()
@@ -25,13 +26,13 @@ router.get("/", (req, res) => {
     });
 });
 
-
+//menu page-post
 router.post("/", (req, res) => {
   menuQueries
     .addItemstoCart()
     .then(items);
   res.send((items) => {
-    
+
   });
 });
 

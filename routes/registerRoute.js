@@ -11,6 +11,7 @@ const bcrypt = require('bcryptjs');
 const database = require("../db/queries/dbQueries");
 const cookieSession = require("cookie-session");
 
+//cookie-session
 router.use(
   cookieSession({
     name: "session",
@@ -18,6 +19,7 @@ router.use(
   })
 );
 
+//register page-setup
 router.get('/', (req, res) => {
   if (req.session.user_id) {
    return res.redirect('/');
@@ -31,6 +33,7 @@ router.get('/', (req, res) => {
   res.render("register", templateVars);
 });
 
+//register page-post
 router.post('/', (req, res) => {
   const { name, email, password, phone, address, 'credit-card': creditCard } = req.body;
   console.log("+++++++++++++++", req.body)

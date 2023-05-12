@@ -11,7 +11,7 @@ const db = require("../db/connection");
 const { showOrdersToRestaurant, updateOrderStatus, updateOrderComplete } = require("../db/queries/dbQueries");
 const sendSms = require("../helpers");
 
-
+//restaurant page-setup
 router.get("/", (req, res) => {
   showOrdersToRestaurant()
     .then((data) => {
@@ -22,6 +22,7 @@ router.get("/", (req, res) => {
     });
 });
 
+//confirm order with sms  
 router.post("/confirm", (req, res) => {
   updateOrderStatus(req.body.order_id, 'confirmed')
     .then((data) => {
@@ -35,6 +36,7 @@ router.post("/confirm", (req, res) => {
     });
 });
 
+//complete order with pickup time and sms
 router.post("/complete", (req, res) => {
   updateOrderComplete(req.body.order_id, 'completed')
     .then((data) => {

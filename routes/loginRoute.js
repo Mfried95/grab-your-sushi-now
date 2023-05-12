@@ -23,6 +23,7 @@ router.get('/', (req, res) => {
   }
 });
 
+//login page-post
 router.post("/", (req, res) => {
   database
     .login(req.body.email, req.body.password)
