@@ -20,7 +20,7 @@ $(document).ready(function() {
   });
 
 
-  $(".remove").click(function () {
+  $(".remove").click(function() {
     const item = JSON.parse($(this).val());
     console.log(item);
 
@@ -50,12 +50,14 @@ $(document).ready(function() {
       method: "POST",
       data: JSON.stringify({ order_id: order_id }),
       contentType: "application/json"
-
     });
+    window.location.reload();
+    
   });
 
   $(".ready").on("click", function() {
     const order_id = parseInt($(this).val());
+    
     console.log("complete order id", typeof order_id);
     $.ajax({
       url: "/restaurant/complete",
@@ -63,6 +65,7 @@ $(document).ready(function() {
       data: JSON.stringify({ order_id: order_id }),
       contentType: "application/json"
     });
+    window.location.reload();
   });
 
   let orderItems = localStorage.getItem("order-items");
@@ -165,7 +168,6 @@ const createPayload = () => {
 
   return payload;
 
-
-
+  
 };
 
