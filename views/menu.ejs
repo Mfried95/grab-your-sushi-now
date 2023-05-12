@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,7 @@
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/nav.scss">
-  
+
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
   <title>SUSHI2GO | Menu</title>
@@ -35,8 +36,22 @@
         </div>
       <% }); %>
 
-    </div>
-  </main>
+            <h2>
+              <%= item.name %>
+            </h2> <span>
+              <%= item.cost %>
+            </span>
+            <img src="<%= item.image %>" alt="<%= item.name %>">
+            <div class="button-item-container">
+              <button class="add" value="<%= JSON.stringify(item) %>">ADD +</button>
+              <button class="remove" value="<%= JSON.stringify(item) %>">Remove</button>
+            </div>
+          </div>
+          <% }); %>
+
+      </div>
+    </main>
 
 </body>
+
 </html>

@@ -43,6 +43,27 @@ $(document).ready(function() {
     }
   });
 
+  $(".confirm").on("click", function() {
+    const order_id = parseInt($(this).val());
+    $.ajax({
+      url: "/restaurant/confirm",
+      method: "POST",
+      data: JSON.stringify({ order_id: order_id }),
+      contentType: "application/json"
+
+    });
+  });
+
+  $(".ready").on("click", function() {
+    const order_id = parseInt($(this).val());
+    console.log("complete order id", typeof order_id);
+    $.ajax({
+      url: "/restaurant/complete",
+      method: "POST",
+      data: JSON.stringify({ order_id: order_id }),
+      contentType: "application/json"
+    });
+  });
 
   let orderItems = localStorage.getItem("order-items");
   let itemsArray = JSON.parse(orderItems);
@@ -112,7 +133,7 @@ $(document).ready(function() {
     });
   });
 
-  $
+  $;
 
 });
 
@@ -147,8 +168,4 @@ const createPayload = () => {
 
 
 };
-
-
-
-
 

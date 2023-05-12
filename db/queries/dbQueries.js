@@ -74,12 +74,14 @@ const showOrdersToRestaurant = function() {
   return db.query(`select orders.id, users.name, menu_items.name, cart_items.quantity, cart_items.total_cost as items_price, orders.total, orders.status
                   from orders join cart_items on orders.id = cart_items.order_id JOIN users ON orders.user_id = users.id
                   join menu_items ON menu_items.id = cart_items.menu_item_id
-                  WHERE orders.status = 'Order Submitted!';`)
+                  ;`)
     .then(data => {
       console.log(data.rows);
       return data.rows;
     });
 };
+
+
 
 //get user info
 const getUserInfo = function() {
@@ -92,7 +94,7 @@ const getUserInfo = function() {
 
 //get user order history
 const getUserOrderHistory = function() {
-  return db.query('SELECT * from orders where user_id=2 order by completed_at desc limit 1;')
+  return db.query(`SELECT * from orders where user_id=2 order by completed_at desc limit 5;`)
     .then(data => {
       console.log(data.rows);
       return data.rows;
@@ -118,8 +120,8 @@ const addUser = function(values) {
 };
 
 //update order status
-const updateOrderStatus = function (order_id, status) {
-  return db.query(`UPDATE orders SET status = 'Order in Progress!' WHERE id = $1 RETURNING *;`, [order_id, status])
+const updateOrderStatus = function(order_id) {
+  return db.query(`UPDATE orders SET status = 'Order in Progress!' WHERE id = $1 RETURNING *;`, [order_id])
     .then(data => {
       console.log(data.rows);
       return data.rows;
@@ -127,8 +129,8 @@ const updateOrderStatus = function (order_id, status) {
 };
 
 //Update order complete
-const updateOrderComplete = function (order_id, status) {
-  return db.query(`UPDATE orders SET status = 'Order Completed!' WHERE id = $1 RETURNING *;`, [order_id, status])
+const updateOrderComplete = function(order_id) {
+  return db.query(`UPDATE orders SET status = 'Order Completed!' WHERE id = $1 RETURNING *;`, [order_id])
     .then(data => {
       console.log(data.rows);
       return data.rows;
