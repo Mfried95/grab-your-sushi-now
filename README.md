@@ -24,13 +24,13 @@ Sushi 2 Go is a restaurant ordering application that allows users to browse a me
 
 ## Screenshots
 
-(./docs/menu.png)
+![Menu](./docs/menu.png)
 _Screenshot of the menu page._
 
-(./docs/order.png)
+![Order](./docs/order.png)
 _Screenshot of the order page._
 
-(./docs/rest.png)
+![Restaurant](./docs/rest.png)
 _Screenshot of the restaurant side._
 
 ## Created by:
