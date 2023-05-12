@@ -18,6 +18,8 @@ Sushi 2 Go is a restaurant ordering application that allows users to browse a me
 
 - EJS
 - NodeJs
+- Express
+- PostgreSQL
 - jQuery
 - Twillo
 - Scss
