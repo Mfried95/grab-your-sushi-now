@@ -1,5 +1,5 @@
 const accountSid = "ACa5bb62a133fb76403ae9591938b950b6";
-const authToken = "547e39c6f1baac63cdbac6487415e0de";
+const authToken = "54f83c45d9279299325dc574f18ce075";
 
 const sendSms = (phone, message) => {
   console.log("sendSms");

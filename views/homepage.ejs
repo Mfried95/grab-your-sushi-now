@@ -15,14 +15,47 @@
   <link rel="stylesheet" href="/styles/nav.scss">
 
   <script
-  src="https://code.jquery.com/jquery-3.6.4.min.js"
-  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-  crossorigin="anonymous"></script>
-  
+    src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+    crossorigin="anonymous"></script>
+
+  <style>
+    .hero-image {
+      /* background-image: url('docs/vinicius-benedit--1GEAA8q3wk-unsplash.jpg'); */
+
+      background-image: url("./bg-main.jpg");
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      font-size: 48px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .slogan {
+      font-size: 32px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+    }
+  </style>
 </head>
 
 <body class="home-body">
   <%- include('partials/nav') %>
+  <div class="hero-image">
+    <h1>SUSHI-2-GO</h1>
+    <p class="slogan">Delicious Sushi Delivered to Your Doorstep</p>
+  </div>
 </body>
 
 </html>
+
