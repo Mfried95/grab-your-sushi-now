@@ -1,5 +1,5 @@
-const accountSid = "ACa5bb62a133fb76403ae9591938b950b6";
-const authToken = "54f83c45d9279299325dc574f18ce075";
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 
 const sendSms = (phone, message) => {
   console.log("sendSms");

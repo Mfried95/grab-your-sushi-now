@@ -48,5 +48,5 @@ Follow these steps to get the project up and running:
 git clone https://github.com/Mfried95/grab-your-sushi-now
 
 - npm install
-- npm run db:reset
+- c
 - npm start
